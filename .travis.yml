@@ -15,6 +15,9 @@ deploy:
   bucket_path: docker
   on:
     branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRET_KEY"
 env:
   global:
   - secure: cxWroGRTOzDu2pU6mjIQnilNZHmXvGhqnkuUnJAtSBAJrwAvqC81i+ptm83CJcsFHkTarNZI6ayncuiVt0ZepQEr777P0s1KUzMeHXTmLApXGLJf87z0XRroSbfnvg+ra3jWTG02ZGwPobRNDubIVBCpLhgasJnmE7vyJcd/0qeAPVmztc68BmOgArZSL5A0N4+ldgpNzibPwU8iOFC/UG182+4m8tcOQ1/zC0FGRAmjMb7sywDPaTkNPZJmdlpT1AiPg7ue72OjEJHDKbuplt4+SDdE0Ogv0bDBdAMaPAIhc/PwgXUlf5AoiewGk9CxJkImz95ApTGjcV92g+I60br6CoBWFh7VWBeHecLE17SOauMIcl4KlVT9rXqZxDan63FMZG65FUZSJvyFEEQASDZJPh7BXwQEsbMxHUphndKUFuXY6lfY+2EopxKiKPt1bI9iMdZTF2xWDlyVvibqS8ECuBsL/vdX1kGkgmAY5/+DmiASdX0/nEMLeE7FMKWFY9YvkeBxBXeAFr5X2Qzpj+xKwybM+W/pPaMAKpiH6s94TF0GwxEegJHYCA0OuE0E+rLzkflxABinUiMUkFdFtPg+gdi9lGlmqYNAKBkpghA5h/+u5MSUoJ58oQEoyIiVM5+VKXFjxgBRcoJg3cyhXWAj1ohSKpSk6XnKqzWBPNc=
