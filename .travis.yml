@@ -8,3 +8,19 @@ before_install:
 
 script:
   - docker run -e CI=true spoonobi/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-819642052814"
+  bucket_path: "docker"
+  on:
+    branch: master
+
+  #access_key_id: $AWS_ACCESS_KEY
+  #secret_access_key: $AWS_SECRET_KEY
+
+  #AKIA35VTZGDHFX7HC3EW
+  #vvHtikLT0FCaYn8mF9i1ID5v/IDnfum07Gekp2le
