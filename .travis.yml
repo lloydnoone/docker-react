@@ -1,10 +1,21 @@
 language: generic
 sudo: required
-services: 
-  - docker
-
-before_install: 
-  - docker build -t spoonobi/docker-react -f Dockerfile.dev .
-
+services:
+- docker
+before_install:
+- docker build -t lloydnoone/docker-react -f Dockerfile.dev .
 script:
-  - docker run -e CI=true spoonobi/docker-react npm run test
+- docker run -e CI=true lloydnoone/docker-react npm run test
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: docker
+  env: Docker-env
+  bucket_name: elasticbeanstalk-eu-west-2-819642052814
+  bucket_path: docker
+  on:
+    branch: master
+env:
+  global:
+  - secure: cxWroGRTOzDu2pU6mjIQnilNZHmXvGhqnkuUnJAtSBAJrwAvqC81i+ptm83CJcsFHkTarNZI6ayncuiVt0ZepQEr777P0s1KUzMeHXTmLApXGLJf87z0XRroSbfnvg+ra3jWTG02ZGwPobRNDubIVBCpLhgasJnmE7vyJcd/0qeAPVmztc68BmOgArZSL5A0N4+ldgpNzibPwU8iOFC/UG182+4m8tcOQ1/zC0FGRAmjMb7sywDPaTkNPZJmdlpT1AiPg7ue72OjEJHDKbuplt4+SDdE0Ogv0bDBdAMaPAIhc/PwgXUlf5AoiewGk9CxJkImz95ApTGjcV92g+I60br6CoBWFh7VWBeHecLE17SOauMIcl4KlVT9rXqZxDan63FMZG65FUZSJvyFEEQASDZJPh7BXwQEsbMxHUphndKUFuXY6lfY+2EopxKiKPt1bI9iMdZTF2xWDlyVvibqS8ECuBsL/vdX1kGkgmAY5/+DmiASdX0/nEMLeE7FMKWFY9YvkeBxBXeAFr5X2Qzpj+xKwybM+W/pPaMAKpiH6s94TF0GwxEegJHYCA0OuE0E+rLzkflxABinUiMUkFdFtPg+gdi9lGlmqYNAKBkpghA5h/+u5MSUoJ58oQEoyIiVM5+VKXFjxgBRcoJg3cyhXWAj1ohSKpSk6XnKqzWBPNc=
+  - secure: u32sYi2CYQJZXOH/ll8pXf+Vz1dsbR8pGmVcRnZFdsi04nWU7Ak+jGmE4j1xU3gCMzB2mt6qRX/DXobhADBdtDQ94pdX1lNLQbmrkEvGqK22XpvLZmRk7WZq/ffU5peAgnrv1lPSsjEj5Mw5U+cgO1FoH65I54qQGXEHbVVe8Ano3N24Fa7LHi4tUTE2UCtTx/noMbhgNzHozE5/0QiflSGH5N22M53ynpT0qvChpQj3Iy7d6eK1boSoo9GgSEKrD7UfET1HBGVCjaJKdNahfhaAG+J/uesK7OtU4Knh2gCKa9i03sDsoCH/tgnfOXcavxK9zhA7zluh2omV9Ja3EJnRjoiio8EZXDZzzEbb8F/eBL/qLwu/djWooAEoFlRwTfq62t7nbPsh3k3jztAysd1WJfFba0xyTrxkHxiUCG6HFTiREBd/Tl7NG9GHEXebcjqHuvCnLxlg/CwSbbI6pr2rmsNLNu6IalUgjCzcuFB/YmXlq5GVprbGxj1lm0mPkHgXWSjdyTVqaKg5rrVoioRS+FFpeLFCJuHU5bvIrRn0HGNVTlzl5IMjKdcaKVhCC1PGysZGjoXA3d1zIUh/wGvMZyftSPsxDZ5Mykt1M5/OU7h+f6gSiTXA7Z/XTr6VbkE1ADNt1PJU/3nLQLPqU2HwvSGe+X+5AhNcHmXHOV0=
