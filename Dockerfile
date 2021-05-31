@@ -10,6 +10,7 @@ RUN npm install
 COPY . .
 RUN npm run build
  
+# copy built minified app into nginx
 FROM nginx
 EXPOSE 80
 # cannot use named so 0 to refer to alpine instead
