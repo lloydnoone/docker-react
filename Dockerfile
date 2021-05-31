@@ -6,6 +6,7 @@ WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
 
+# create built minified app
 COPY . .
 RUN npm run build
  
